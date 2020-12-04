@@ -1,0 +1,35 @@
+do {
+if let file = Bundle.main.url(forResource: "CodeData", withExtension: "JSON") {
+let data = try Data(contentsOf: file)
+let json = try JSONSerialization.jsonObject(with: data, options: [])
+if let object = json as? [String: Any] {
+// json is a dictionary
+print(object)
+} else if let object = json as? NSArray {
+// json is an array
+print(object)
+
+for dic in object {
+
+let dicData = dic as? NSDictionary
+
+let name = dicData?.value(forKey: "name") as? String
+
+let code = dicData?.value(forKey: "dial_code") as? String
+
+
+self.arrayCounrtyCode.append("\(name ?? "") \(code ?? "")")
+}
+
+setDropDownCountryCode()
+
+} else {
+print("JSON is invalid")
+}
+} else {
+print("no file")
+}
+} catch {
+
+
+}
