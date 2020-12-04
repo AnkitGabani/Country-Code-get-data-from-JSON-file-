@@ -1,3 +1,5 @@
+var arrayCounrtyCode = [""]
+
 do {
 if let file = Bundle.main.url(forResource: "CodeData", withExtension: "JSON") {
 let data = try Data(contentsOf: file)
